@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Disaster Management Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>🌪 Disaster Relief & Emergency Management System</h1>
+    
+    <div class="grid">
+        <a class="card" href="/add_food_item">🍎 Add Food Item</a>
+        <a class="card" href="/add_health_item">💊 Add Health Item</a>
+        <a class="card" href="/view_food_items">📊 View Food Items</a>
+        <a class="card" href="/view_health_items">📊 View Health Items</a>
+        <a class="card" href="/add_disaster">➕ Add Disaster</a>
+        <a class="card" href="/add_victim">👤 Add Victim</a>
+        <a class="card" href="/view_disasters">📋 View Disasters</a>
+        <a class="card" href="/view_tables">🗄 View Tables</a>
+        <a class="card danger" href="/clear_database">🧹 Clear Database</a>
+    </div>
+</div>
+</body>
+</html>

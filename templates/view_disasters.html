@@ -1,0 +1,82 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<div class="container">
+    <h1>All Disasters</h1>
+
+    <div class="grid">
+        {% for d in disasters %}
+        <div class="card disaster-card">
+            <h2>{{ d.name }}</h2>
+            <p><strong>Type:</strong> {{ d.disaster_type }}</p>
+            <p><strong>Date:</strong> {{ d.date }}</p>
+            <p><strong>Location:</strong> {{ d.location }}</p>
+
+            <h4>Victims:</h4>
+            {% if d.victims %}
+            <ul class="victim-list">
+                {% for v in d.victims %}
+                <li>{{ v.name }} ({{ v.age }})</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No victims reported.</p>
+            {% endif %}
+
+            <div class="actions">
+                <a href="/edit_disaster/{{ d.id }}" class="edit-btn">✏️ Edit</a>
+                <a href="/delete_disaster/{{ d.id }}" class="danger">🗑 Delete</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+.disaster-card {
+    background: #f9f9f9;
+    color: #111;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.disaster-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.victim-list {
+    padding-left: 20px;
+}
+
+.actions {
+    margin-top: 15px;
+}
+
+.actions a {
+    text-decoration: none;
+    margin-right: 10px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.edit-btn {
+    background: #3b82f6;
+    color: white;
+}
+
+.edit-btn:hover {
+    background: #2563eb;
+}
+
+.danger {
+    background: #ef4444;
+    color: white;
+}
+
+.danger:hover {
+    background: #b91c1c;
+}
+</style>

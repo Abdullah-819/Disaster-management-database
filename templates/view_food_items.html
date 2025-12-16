@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Items per Disaster</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #999;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #3b82f6;
+            color: white;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Food Items per Disaster</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Disaster Name</th>
+            <th>Total Food Items</th>
+            <th>Item Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for disaster in disasters %}
+        <tr>
+            <td>{{ disaster.name }}</td>
+            <td>{{ disaster.food_items | length }}</td>
+            <td>
+                <ul>
+                {% for item in disaster.food_items %}
+                    <li>{{ item.name }}: {{ item.quantity }}</li>
+                {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>

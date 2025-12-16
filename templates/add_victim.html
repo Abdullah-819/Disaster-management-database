@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Victim</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+<h2>Add Victim</h2>
+
+<form method="POST">
+    Name:<br>
+    <input type="text" name="name" required><br>
+    Age:<br>
+    <input type="number" name="age" required><br>
+    Disaster:<br>
+    <select name="disaster_id">
+        {% for d in disasters %}
+        <option value="{{ d.id }}">{{ d.name }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <button type="submit">Add Victim</button>
+</form>
+</div>
+</body>
+</html>

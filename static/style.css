@@ -1,0 +1,428 @@
+/* =================== RESET & BASE =================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+                 Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    color: #1f2937;
+    min-height: 100vh;
+}
+
+/* =================== CONTAINER =================== */
+.container {
+    max-width: 1250px;
+    margin: 50px auto;
+    padding: 60px;
+    border-radius: 30px;
+
+    /* Glass effect */
+    background: rgba(255, 255, 255, 0.25);       /* semi-transparent white */
+    backdrop-filter: blur(20px) saturate(180%);  /* frosted blur + vibrancy */
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);  /* subtle glass border */
+    
+    /* Depth */
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.12),
+        0 10px 25px rgba(0, 0, 0, 0.06);
+    
+    /* Smooth hover */
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                background 0.4s ease;
+}
+
+.container:hover {
+    transform: translateY(-8px) scale(1.015);  /* subtle lift and zoom */
+    box-shadow:
+        0 35px 70px rgba(0, 0, 0, 0.18),
+        0 20px 40px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.35);    /* slightly more opaque on hover */
+}
+
+/* =================== HEADINGS =================== */
+h1 {
+    font-size: 34px;
+    margin-bottom: 30px;
+    color: #111827;
+    text-align: center;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    margin-top: 40px;
+    color: #1f2937;
+}
+
+h3 {
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+
+h4 {
+    margin-top: 10px;
+    margin-bottom: 6px;
+}
+
+/* =================== GRID DASHBOARD =================== */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    padding: 30px;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    color: #ffffff;
+    text-decoration: none;
+    box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(79, 70, 229, 0.4);
+}
+
+/* =================== BUTTONS =================== */
+a, button {
+    display: inline-block;
+    margin: 6px 0;
+    padding: 12px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+a {
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    color: #ffffff;
+    box-shadow: 0 8px 18px rgba(79, 70, 229, 0.25);
+}
+
+a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(79, 70, 229, 0.35);
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+}
+
+a.danger {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    box-shadow: 0 8px 18px rgba(239, 68, 68, 0.25);
+}
+
+a.danger:hover {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    box-shadow: 0 12px 25px rgba(239, 68, 68, 0.35);
+}
+
+button {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: #ffffff;
+    box-shadow: 0 8px 18px rgba(34, 197, 94, 0.25);
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(34, 197, 94, 0.35);
+    background: linear-gradient(135deg, #16a34a, #15803d);
+}
+
+/* =================== FORM ELEMENTS =================== */
+form {
+    margin-top: 25px;
+}
+
+input, select {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+    font-size: 15px;
+    background: #f9fafb;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+    background: #ffffff;
+}
+
+/* =================== TABLES =================== */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 25px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+th {
+    background: linear-gradient(135deg, #1f2937, #111827);
+    color: #ffffff;
+    padding: 14px;
+    font-size: 14px;
+    text-align: left;
+}
+
+td {
+    padding: 12px 14px;
+    font-size: 14px;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover td {
+    background: #f3f4f6;
+}
+
+/* =================== LISTS =================== */
+ul {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+li {
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+/* =================== SEPARATOR =================== */
+hr {
+    margin: 30px 0;
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #d1d5db, transparent);
+}
+
+/* =================== RESPONSIVE =================== */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px;
+        margin: 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .grid {
+        gap: 15px;
+    }
+
+    input, select {
+        max-width: 100%;
+    }
+}
+/* ===== BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(60deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1, #fcd1d1, #84fab0, #8fd3f4, #a6c0fe);
+    background-size: 800% 800%;
+    z-index: -1;
+    animation: gradientFlow 15s ease infinite;
+}
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    25% { background-position: 50% 100%; }
+    50% { background-position: 100% 50%; }
+    75% { background-position: 50% 0%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    max-width: 1200px;
+    width: 100%;
+   background: rgba(255, 255, 255, 0.2);
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* ===== HEADING ===== */
+h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #0d0d0d;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+}
+
+/* ===== GRID ===== */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+/* ===== CARD BUTTONS ===== */
+.card {
+    padding: 30px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #f97316, #f43f5e);
+    text-decoration: none;
+    border-radius: 18px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+    background: linear-gradient(135deg, #f43f5e, #ec4899);
+}
+
+/* ===== DANGER CARD ===== */
+.card.danger {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.card.danger:hover {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .card {
+        padding: 25px 15px;
+        font-size: 14px;
+    }
+}
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    font-size: 15px;
+    background: #ffffffcc; /* slightly transparent for depth */
+    backdrop-filter: blur(8px);
+}
+
+/* Table header */
+th {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    color: #ffffff;
+    padding: 14px 18px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 15px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Table rows */
+td {
+    padding: 14px 18px;
+    background: #f3f4f6;
+    border-bottom: 1px solid #e5e7eb;
+    transition: background 0.3s, transform 0.2s;
+}
+
+/* Alternating row colors */
+tr:nth-child(even) td {
+    background: #e0f2fe33; /* very subtle blue tint */
+}
+
+/* Hover effect for rows */
+tr:hover td {
+    background: linear-gradient(120deg, #dbeafe, #bae6fd);
+    transform: scale(1.01);
+}
+
+/* Section headings */
+h2 {
+    font-size: 22px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    color: #1e40af;
+    border-bottom: 3px solid #3b82f6;
+    padding-bottom: 6px;
+}
+
+/* Small shadow for table caption if needed */
+caption {
+    caption-side: top;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #2563eb;
+    text-align: left;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    td, th {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+}

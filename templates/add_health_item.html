@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Health Item</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+<h1>Add Health Item</h1>
+<form method="POST">
+    <label>Health Item Name:</label><br>
+    <input type="text" name="name" required><br><br>
+
+    <label>Quantity:</label><br>
+    <input type="number" name="quantity" required><br><br>
+
+    <label>Select Disaster:</label><br>
+    <select name="disaster_id" required>
+        {% for d in disasters %}
+        <option value="{{ d.id }}">{{ d.name }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <button type="submit">Add Health Item</button>
+</form>
+</div>
+</body>
+</html>

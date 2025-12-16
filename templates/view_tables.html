@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Database Overview</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>📊 Disaster Management Database Overview</h1>
+
+    <!-- ===== DISASTERS TABLE ===== -->
+    <h2>Disasters Table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID (PK)</th>
+                <th>Name (Unique, Not Null)</th>
+                <th>Type (Not Null)</th>
+                <th>Date (Not Null)</th>
+                <th>Location (Not Null)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in disasters %}
+            <tr>
+                <td>{{ d.id }}</td>
+                <td>{{ d.name }}</td>
+                <td>{{ d.disaster_type }}</td>
+                <td>{{ d.date }}</td>
+                <td>{{ d.location }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- ===== VICTIMS TABLE ===== -->
+    <h2>Victims Table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID (PK)</th>
+                <th>Name (Not Null)</th>
+                <th>Age (Non-negative)</th>
+                <th>Disaster (FK)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for v in victims %}
+            <tr>
+                <td>{{ v.id }}</td>
+                <td>{{ v.name }}</td>
+                <td>{{ v.age }}</td>
+                <td>{{ v.disaster.name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- ===== FOOD ITEMS TABLE ===== -->
+    <h2>Food Items Table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID (PK)</th>
+                <th>Name (Not Null)</th>
+                <th>Quantity (>=0)</th>
+                <th>Disaster (FK)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in disasters %}
+                {% for fi in d.food_items %}
+                <tr>
+                    <td>{{ fi.id }}</td>
+                    <td>{{ fi.name }}</td>
+                    <td>{{ fi.quantity }}</td>
+                    <td>{{ d.name }}</td>
+                </tr>
+                {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- ===== HEALTH ITEMS TABLE ===== -->
+    <h2>Health Items Table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID (PK)</th>
+                <th>Name (Not Null)</th>
+                <th>Quantity (>=0)</th>
+                <th>Disaster (FK)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in disasters %}
+                {% for hi in d.health_items %}
+                <tr>
+                    <td>{{ hi.id }}</td>
+                    <td>{{ hi.name }}</td>
+                    <td>{{ hi.quantity }}</td>
+                    <td>{{ d.name }}</td>
+                </tr>
+                {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

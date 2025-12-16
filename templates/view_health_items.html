@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Health Items Stock</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>💊 Health Items Availability</h1>
+
+    {% for d in disasters %}
+    <h2>{{ d.name }} ({{ d.date }})</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for hi in d.health_items %}
+            <tr>
+                <td>{{ hi.name }}</td>
+                <td>{{ hi.quantity }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="2">No health items available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+    {% endfor %}
+</div>
+</body>
+</html>
